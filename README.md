@@ -60,8 +60,9 @@ HEADERS = {
 
 - `encoderPreset` default: `mp3`
 - `mixingPreset` default: `balanced`
-- `voicePreset` default: `standard` → **always override with `expressive`**
+- `voicePreset` default: `standard` → **setting to `expressive` for Elevenlabs voices yields better quality TTS and adds support for [expression prompts](https://elevenlabs.io/docs/overview/capabilities/text-to-speech/best-practices#voice-related). However, it increases risk of hallucination.**
 - `smartFit` default: `false` → **always set `true` when using music**
+- `loudnessPreset` - set to **streaming**
 - Batch max: 1000 items
 
 ### Response codes
