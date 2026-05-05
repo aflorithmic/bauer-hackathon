@@ -50,8 +50,8 @@ class AudioformAdBuilder(ABC):
 
 
 class Coinspot(AudioformAdBuilder):
-    voice = "nathaniel"  # https://platform.audiostack.ai/workflows/voice-library
-    soundbed = "bounce_along"
+    voice = "nathaniel"  # README: Query the Voice Library (POST /assets/voices/query)
+    soundbed = "bounce_along" # README: Query the Sound Template Library (POST /assets/sound-templates/query)
     total_length = 30
 
     def get_time_of_day(self, timezone):
