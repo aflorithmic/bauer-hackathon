@@ -25,7 +25,7 @@ class AudioformAdBuilder(ABC):
         Generates an ad from an audioform and returns the audio URL
         """
         response = requests.post(
-            "https://v2.api.audio/v3/audioform",
+            "https://v2.api.audio/audioforms",
             json=audioform,
             headers={"x-api-key": self.audiostack_api_key},
         )
@@ -35,14 +35,14 @@ class AudioformAdBuilder(ABC):
 
         d = response.json()
         response = requests.get(
-            f"https://v2.api.audio/v3/audioform/{d['data']['audioformId']}",
+            f"https://v2.api.audio/audioforms/{d['data']['audioformId']}",
             headers={"x-api-key": self.audiostack_api_key, "version": "4"},
         )
         while response.status_code == 202:
             print("Waiting for audioform to be ready...")
             sleep(5)
             response = requests.get(
-                f"https://v2.api.audio/v3/audioform/{d['data']['audioformId']}",
+                f"https://v2.api.audio/audioforms/{d['data']['audioformId']}",
                 headers={"x-api-key": self.audiostack_api_key, "version": "4"},
             )
         print(response.text)
@@ -51,7 +51,7 @@ class AudioformAdBuilder(ABC):
 
 class Coinspot(AudioformAdBuilder):
     voice = "nathaniel"  # README: Query the Voice Library (POST /assets/voices/query)
-    soundbed = "bounce_along" # README: Query the Sound Template Library (POST /assets/sound-templates/query)
+    soundbed = "bounce_along"  # README: Query the Sound Template Library (POST /assets/sound-templates/query)
     total_length = 30
 
     def get_time_of_day(self, timezone):
