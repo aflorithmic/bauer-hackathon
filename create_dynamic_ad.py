@@ -216,7 +216,7 @@ class Coinspot(AudioformAdBuilder):
                     "mixingPreset": "musicenhanced",
                 },
                 "delivery": {
-                    "loudnessPreset": "spotify",
+                    "loudnessPreset": "streaming",
                     "encoderPreset": "mp3",
                     "public": True,
                 },
